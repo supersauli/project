@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<SelectorNode>
+		<SequenceNode>
+			<CheckHP hp="1000"/>
+			<Echo info="checkHP 1000"/>
+			<Hit hp="50"/>
+		</SequenceNode>
+		<SequenceNode>
+			<CheckHP hp="900"/>
+			<Echo info="CheckHP 900"/>
+			<Hit hp="20"/>
+		</SequenceNode>
+	<SequenceNode>
+			<CheckHP hp="100"/>
+			<Echo info="CheckHP 100"/>
+			<Hit hp="90"/>
+		</SequenceNode>
+	</SelectorNode>
+
+</root>

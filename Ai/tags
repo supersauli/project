@@ -1,0 +1,152 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+A	main.cpp	/^	explicit A(const Create_Help&){};$/;"	f	class:A
+A	main.cpp	/^class A$/;"	c	file:
+AINODEGROUP	AISystem.h	/^typedef std::list<AINode*> AINODEGROUP;$/;"	t
+AINode	AINode.h	/^class AINode$/;"	c
+AISystem	AISystem.h	/^class AISystem$/;"	c
+AddChild	XmlFile.cpp	/^xmlNodePtr XmlFile::AddChild(xmlNodePtr parent,xmlNodePtr cur)$/;"	f	class:XmlFile
+AddNextSibling	XmlFile.cpp	/^xmlNodePtr XmlFile::AddNextSibling(xmlNodePtr cur,xmlNodePtr elem)$/;"	f	class:XmlFile
+AddNode	AINode.cpp	/^void ParallelNode::AddNode(AINode*node){$/;"	f	class:ParallelNode
+AddNode	AINode.cpp	/^void SelectorNode::AddNode(AINode*node)$/;"	f	class:SelectorNode
+AddNode	AINode.cpp	/^void SequenceNode::AddNode(AINode*node)$/;"	f	class:SequenceNode
+AddPrevSibling	XmlFile.cpp	/^xmlNodePtr XmlFile::AddPrevSibling(xmlNodePtr cur,xmlNodePtr elem)$/;"	f	class:XmlFile
+AddSibling	XmlFile.cpp	/^xmlNodePtr AddSibling(xmlNodePtr cur,xmlNodePtr elem)$/;"	f
+AddTask	TimerTask.h	/^	bool AddTask(int time)$/;"	f	class:TimerTask
+BYTE	sDefine.h	/^typedef unsigned char BYTE;$/;"	t
+BaseAction	AIDefine.h	/^class BaseAction{};$/;"	c
+BaseCheck	AIDefine.h	/^class BaseCheck{};$/;"	c
+CHAR	sDefine.h	/^typedef char CHAR;$/;"	t
+CHECK_NULL_RETURN	sDefine.h	5;"	d
+Check	AISystem.cpp	/^bool JudgeAction::Check(Obj *obj)$/;"	f	class:JudgeAction
+CheckHp	AICheckRuleAction.h	/^class CheckHp:public CheckRuleAction$/;"	c
+CheckMp	AICheckRuleAction.h	/^class CheckMp:public CheckRuleAction$/;"	c
+CheckRuleAction	AICheckRuleAction.h	/^class CheckRuleAction:public BaseAction ,public AINode$/;"	c
+CompareRule	CompareRule.h	/^class CompareRule$/;"	c
+Create	XmlFile.cpp	/^xmlDocPtr XmlFile::Create()$/;"	f	class:XmlFile
+CreateChild	XmlFile.cpp	/^xmlNodePtr XmlFile::CreateChild(xmlNodePtr node,const char*name,const char*content)$/;"	f	class:XmlFile
+CreateNode	XmlFile.cpp	/^xmlNodePtr XmlFile::CreateNode(const char* name)$/;"	f	class:XmlFile
+Create_Help	main.cpp	/^	struct Create_Help$/;"	s	class:A	file:
+DEF_VALUE	AIDefine.h	6;"	d
+DOUBLE	sDefine.h	/^typedef double DOUBLE;$/;"	t
+DWORD	sDefine.h	/^typedef unsigned int DWORD;$/;"	t
+Equal	CompareRule.h	/^		bool Equal(T t1,T t2){return t1 == t2;}$/;"	f	class:CompareRule
+Execute	AISystem.cpp	/^bool JudgeAction::Execute(Obj*obj)$/;"	f	class:JudgeAction
+ExecuteEcho	AIExecuteRuleAction.h	/^class ExecuteEcho :public ExecuteRuleAction$/;"	c
+ExecuteHit	AIExecuteRuleAction.h	/^class ExecuteHit :public ExecuteRuleAction$/;"	c
+ExecuteRuleAction	AIExecuteRuleAction.h	/^class ExecuteRuleAction:public BaseAction ,public AINode$/;"	c
+FLOAT	sDefine.h	/^typedef float FLOAT;$/;"	t
+Free	XmlFile.cpp	/^void XmlFile::Free(xmlDocPtr node)$/;"	f	class:XmlFile
+GetChildNode	XmlFile.cpp	/^xmlNodePtr XmlFile::GetChildNode(const xmlNodePtr node)$/;"	f	class:XmlFile
+GetChildNode	XmlFile.cpp	/^xmlNodePtr XmlFile::GetChildNode(const xmlNodePtr node,const char* name)$/;"	f	class:XmlFile
+GetHp	Hero.h	/^		int GetHp(){return _hp;}$/;"	f	class:Hero
+GetMp	Hero.h	/^		int GetMp(){return _mp;}$/;"	f	class:Hero
+GetNext	XmlFile.cpp	/^xmlNodePtr XmlFile::GetNext(xmlNodePtr node)$/;"	f	class:XmlFile
+GetNode	XmlFile.cpp	/^xmlNodePtr XmlFile::GetNode(const xmlNodePtr node,const char*name)$/;"	f	class:XmlFile
+GetNodeAttrStr	XmlFile.cpp	/^const char* XmlFile::GetNodeAttrStr(const xmlNodePtr node,const char*attrName)$/;"	f	class:XmlFile
+GetNodeContent	XmlFile.cpp	/^std::string XmlFile::GetNodeContent(const xmlNodePtr node)$/;"	f	class:XmlFile
+GetNodeName	XmlFile.cpp	/^const char* XmlFile::GetNodeName(const xmlNodePtr node)$/;"	f	class:XmlFile
+GetNodeValue	XmlFile.cpp	/^void XmlFile::GetNodeValue(const xmlNodePtr node,const char*name,DOUBLE &value,DOUBLE defaultValue)$/;"	f	class:XmlFile
+GetNodeValue	XmlFile.cpp	/^void XmlFile::GetNodeValue(const xmlNodePtr node,const char*name,DWORD&value,DWORD defaultValue )$/;"	f	class:XmlFile
+GetNodeValue	XmlFile.cpp	/^void XmlFile::GetNodeValue(const xmlNodePtr node,const char*name,float &value,float defaultValue)$/;"	f	class:XmlFile
+GetNodeValue	XmlFile.cpp	/^void XmlFile::GetNodeValue(const xmlNodePtr node,const char*name,int &value,DOUBLE defaultValue)$/;"	f	class:XmlFile
+GetNodeValue	XmlFile.cpp	/^void XmlFile::GetNodeValue(const xmlNodePtr node,const char*name,std::string&value,const char* defaultValue)$/;"	f	class:XmlFile
+GetRootElement	XmlFile.cpp	/^xmlNodePtr XmlFile::GetRootElement()$/;"	f	class:XmlFile
+GetRootElement	XmlFile.cpp	/^xmlNodePtr XmlFile::GetRootElement(const char* name)$/;"	f	class:XmlFile
+Hero	Hero.h	/^class Hero$/;"	c
+INT64	sDefine.h	/^typedef long INT64;$/;"	t
+Init	AISystem.cpp	/^bool AISystem::Init()$/;"	f	class:AISystem
+Init	CompareRule.h	/^		void Init()$/;"	f	class:CompareRule
+InitXml	XmlFile.cpp	/^bool XmlFile::InitXml(const char *fileName)$/;"	f	class:XmlFile
+IsIgnore	build	/^IsIgnore()$/;"	f
+JudgeAction	AISystem.h	/^class JudgeAction$/;"	c
+LONG	sDefine.h	/^typedef long LONG;$/;"	t
+LONGLONG	sDefine.h	/^typedef long long LONGLONG;$/;"	t
+Less	CompareRule.h	/^		bool Less(T t1,T t2){return t1 < t2;}$/;"	f	class:CompareRule
+LessEqule	CompareRule.h	/^		bool LessEqule(T t1,T t2){return t1 <= t2;}$/;"	f	class:CompareRule
+Load	AICheckRuleAction.h	/^		void Load(xmlNodePtr node){$/;"	f	class:CheckHp
+Load	AICheckRuleAction.h	/^		void Load(xmlNodePtr node){$/;"	f	class:CheckMp
+Load	AIExecuteRuleAction.h	/^			 void Load(xmlNodePtr node){$/;"	f	class:ExecuteHit
+Load	AIExecuteRuleAction.h	/^		 void Load(xmlNodePtr node){$/;"	f	class:ExecuteEcho
+Load	AINode.h	/^	virtual void Load(xmlNodePtr node){};$/;"	f	class:AINode
+LoadRes	AISystem.cpp	/^bool AISystem::LoadRes()$/;"	f	class:AISystem
+More	CompareRule.h	/^		bool More(T t1,T t2){return t1 > t2;}$/;"	f	class:CompareRule
+MoreEqule	CompareRule.h	/^		bool MoreEqule(T t1,T t2){return t1 >= t2;}$/;"	f	class:CompareRule
+NodeGroup	AINode.h	/^typedef std::list<AINode*>  NodeGroup ;$/;"	t
+Not	CompareRule.h	/^		bool Not(T t1,T t2){return t1 != t2;}$/;"	f	class:CompareRule
+Obj	AINode.h	/^typedef Hero Obj;$/;"	t
+ParallelHybirdNode	AINode.h	/^class ParallelHybirdNode:public AINode$/;"	c
+ParallelNode	AINode.h	/^class ParallelNode:public AINode$/;"	c
+Parse	XmlFile.cpp	/^bool XmlFile::Parse(const char*buf,int size)$/;"	f	class:XmlFile
+ParseNode	AISystem.cpp	/^bool AISystem::ParseNode(xmlNodePtr node,AINODEGROUP& nodeGroup)$/;"	f	class:AISystem
+QWORD	sDefine.h	/^typedef unsigned long QWORD;$/;"	t
+Run	AISystem.cpp	/^bool StateMachine::Run(Obj *obj)$/;"	f	class:StateMachine
+SAFE_DEL	sDefine.h	3;"	d
+SAFE_DEL_ARRAY	sDefine.h	4;"	d
+SDWORD	sDefine.h	/^typedef signed int SDWORD;$/;"	t
+SHORT	sDefine.h	/^typedef short SHORT;$/;"	t
+SQWORD	sDefine.h	/^typedef signed long SQWORD;$/;"	t
+SWORD	sDefine.h	/^typedef signed short SWORD;$/;"	t
+SelectorNode	AINode.h	/^class SelectorNode:public AINode$/;"	c
+SequenceNode	AINode.h	/^class SequenceNode:public AINode$/;"	c
+SetHp	Hero.h	/^		void SetHp(int hp){_hp=hp;std::cout<<"hpNow"<<_hp<<std::endl;}$/;"	f	class:Hero
+SetMp	Hero.h	/^		void SetMp(int mp){_mp=mp;}$/;"	f	class:Hero
+SetNodeContent	XmlFile.cpp	/^void XmlFile::SetNodeContent(xmlNodePtr node,const char* content,int len)$/;"	f	class:XmlFile
+SkillSystem	SkillSystem.h	/^class SkillSystem$/;"	c
+StateMachine	AISystem.h	/^class StateMachine$/;"	c
+TimerTask	TimerTask.h	/^	TimerTask()$/;"	f	class:TimerTask
+TimerTask	TimerTask.h	/^class TimerTask{$/;"	c
+Update	AICheckRuleAction.h	/^		virtual bool Update(Obj*obj)$/;"	f	class:CheckMp
+Update	AICheckRuleAction.h	/^		virtual bool Update(Obj*obj){$/;"	f	class:CheckHp
+Update	AIExecuteRuleAction.h	/^		virtual	bool Update(Obj*obj)$/;"	f	class:ExecuteEcho
+Update	AIExecuteRuleAction.h	/^		virtual	bool Update(Obj*obj)$/;"	f	class:ExecuteHit
+Update	AINode.cpp	/^bool  ParallelNode::Update(Obj *obj)$/;"	f	class:ParallelNode
+Update	AINode.cpp	/^bool  SequenceNode::Update(Obj *obj)$/;"	f	class:SequenceNode
+Update	AINode.cpp	/^bool ParallelHybirdNode::Update(Obj *obj)$/;"	f	class:ParallelHybirdNode
+Update	AINode.cpp	/^bool SelectorNode::Update(Obj *obj)$/;"	f	class:SelectorNode
+Update	AINode.h	/^	virtual bool  Update(Obj *obj){$/;"	f	class:AINode
+Update	AISystem.cpp	/^void AISystem::Update(Hero*hero)$/;"	f	class:AISystem
+Update	AISystem.cpp	/^void Update(int id,Obj*obj)$/;"	f
+WORD	sDefine.h	/^typedef unsigned short WORD;$/;"	t
+XmlFile	XmlFile.h	/^class XmlFile$/;"	c
+_AINodeFunction	AISystem.h	/^		std::map<std::string,AINode*> _AINodeFunction;$/;"	m	class:AISystem
+_AINodeGroup	AISystem.h	/^		std::list<AINode*> _AINodeGroup;$/;"	m	class:AISystem
+_AI_CHECK_RULE_ACTION_H__	AICheckRuleAction.h	2;"	d
+_AI_EXECUTE_RULE_ACTION_H__	AIExecuteRuleAction.h	2;"	d
+_COMPARE_RULE_H__	CompareRule.h	2;"	d
+_DEFINE_H__	sDefine.h	2;"	d
+_HERO_H__	Hero.h	2;"	d
+_SKILL_SYSTEM_H__	SkillSystem.h	2;"	d
+_TIMER_TASK_H__	TimerTask.h	2;"	d
+__AI_BASE_DEFINE_H__	AIDefine.h	2;"	d
+__AI_NODE_H__	AINode.h	2;"	d
+__AI_SYSTEM_H__	AISystem.h	2;"	d
+__XML_FILE_H__	XmlFile.h	2;"	d
+_checkRuleAction	AISystem.h	/^		std::vector<CheckRuleAction*> _checkRuleAction;$/;"	m	class:JudgeAction
+_cmpRuleMap	CompareRule.h	/^		std::map<std::string,compareRule> _cmpRuleMap;$/;"	m	class:CompareRule
+_executeRuleAction	AISystem.h	/^		std::vector<ExecuteRuleAction*> _executeRuleAction;$/;"	m	class:JudgeAction
+_info	AIExecuteRuleAction.h	/^		std::string _info;$/;"	m	class:ExecuteEcho
+_judgeAction	AISystem.h	/^		std::vector<JudgeAction*>  _judgeAction;$/;"	m	class:StateMachine
+_needReturnFlag	AINode.h	/^	bool _needReturnFlag;$/;"	m	class:ParallelHybirdNode
+_needReturnFlagNum	AINode.h	/^	int  _needReturnFlagNum;$/;"	m	class:ParallelHybirdNode
+_objValue	AICheckRuleAction.h	/^		int _objValue;$/;"	m	class:CheckHp
+_objValue	AICheckRuleAction.h	/^		int _objValue;$/;"	m	class:CheckMp
+_parallelGroup	AINode.h	/^	NodeGroup  _parallelGroup;$/;"	m	class:ParallelNode
+_parallelGroup	AINode.h	/^	NodeGroup _parallelGroup;$/;"	m	class:ParallelHybirdNode
+_selectGroup	AINode.h	/^	 NodeGroup _selectGroup;$/;"	m	class:SelectorNode
+_sequenceGroup	AINode.h	/^	NodeGroup  _sequenceGroup;$/;"	m	class:SequenceNode
+_stateMachineMap	AISystem.h	/^		std::map<int,AINode*> _stateMachineMap;$/;"	m	class:AISystem
+_xmlFile	AISystem.h	/^		XmlFile _xmlFile;$/;"	m	class:AISystem
+compare	CompareRule.h	/^		bool compare(std::string ruleName,T t1,T t2){$/;"	f	class:CompareRule
+compareRule	CompareRule.h	/^		typedef *(compareRule)(T t1,T t2);$/;"	t	class:CompareRule
+crate	main.cpp	/^	static shared_ptr<A> crate()$/;"	f	class:A
+epollfd	TimerTask.h	/^	int epollfd;$/;"	m	class:TimerTask
+main	main.cpp	/^int main()$/;"	f
+saveToFile	XmlFile.cpp	/^bool XmlFile::saveToFile(const char*fileName,xmlDocPtr node,const char*encoding,int format)$/;"	f	class:XmlFile
+saveToString	XmlFile.cpp	/^int XmlFile::saveToString(xmlDocPtr node,std::string &out,const char*encoding,int format)$/;"	f	class:XmlFile
+timefd	TimerTask.h	/^	int timefd;$/;"	m	class:TimerTask
+~XmlFile	XmlFile.h	/^		~XmlFile(){$/;"	f	class:XmlFile

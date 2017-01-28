@@ -1,0 +1,54 @@
+#!/bin/sh
+
+CXX=clang++
+#CXX=g++
+CXXFLAGS=" -g -Wall -std=c++11 -lxml2"
+#LIB=" -ljsoncpp -lpthread -lrt"
+LIB="-lpthread -lrt"
+INCLUDE=" -I ../json/include/"
+#INCLUDE=" "
+#LIBDIR=" -L ../json/lib"
+LIBDIR=" -L libsdk"
+
+#忽略文件列表
+ignore=""
+
+
+
+
+
+
+
+
+
+#判断是否忽略
+IsIgnore()
+{
+	for index in ${ignore} 
+	 do	 	
+		if [ "${index}" = "${1}" ]
+		then
+		  	return 1
+		fi
+	done
+	return 0
+}
+
+
+
+fileList=$( ls -R|awk '/\.cpp|\.cc/' )
+echo  $fileList
+for str in $fileList
+do
+	#加``是为了str 作用域 不被修改
+ 	#ret=`IsIgnore ${str}`
+ 	IsIgnore ${str}
+ 	num=$?
+ 	if [ "${num}" -eq 0 ] 
+ 	then
+ 		file=${file}" "${str}" "
+ 	fi
+done
+ 
+${CXX}    ${CXXFLAGS} ${file}  ${INCLUDE}  ${LIBDIR}  ${LIB}   -o run
+
