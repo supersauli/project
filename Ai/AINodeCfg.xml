@@ -19,7 +19,7 @@
 	<SequenceNode>
 		<CheckHP hp="100" cmp = "&lt;" />
 			<Echo info="CheckHP -90"/>
-			<Hit hp="-90"/>
+			<Hit hp="-1000"/>
 		</SequenceNode>
 	</SelectorNode>
 

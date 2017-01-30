@@ -77,7 +77,7 @@ class XmlFile
 		 *
 		 * @return 
 		 */
-		const char* GetNodeName(const xmlNodePtr node);
+		static const char* GetNodeName(const xmlNodePtr node);
 
 		/**
 		 * @brief 获取节点

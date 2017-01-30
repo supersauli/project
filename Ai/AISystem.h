@@ -41,8 +41,16 @@ class AISystem
 	public:
 		bool Init();
 		bool LoadRes();
+		
+		/**
+		 * @brief 是否是特殊节点 
+		 *
+		 * @return 
+		 */
+		bool IsSpecial(const char* nodeName);
 		void Update(int id,Obj*obj);
-		bool ParseNode(xmlNodePtr node,AINodeGroup& nodeGroup);
+		void ParseNode(xmlNodePtr node,AINodeGroup& nodeGroup);
+		void TraversalNode(xmlNodePtr node,AINodeGroup& nodeGroup);
 		void Update(Hero*hero);
 
 	private:

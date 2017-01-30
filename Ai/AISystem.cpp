@@ -89,68 +89,69 @@ bool AISystem::Init()
 	_AINodeFunction["CheckMP"] = []()->AINodeBase*{return new CheckMp();};
 	_AINodeFunction["Hit"] = []()->AINodeBase*{return new ExecuteHit();};
 	_AINodeFunction["Echo"] = []()->AINodeBase*{return new ExecuteEcho();};
+	_AINodeFunction["SelectorNode"] = []()->AINodeBase*{return new SelectorNode();};
+	_AINodeFunction["SequenceNode"] = []()->AINodeBase*{return new SequenceNode();};
+	_AINodeFunction["ParallelNode"] = []()->AINodeBase*{return new ParallelNode();};
 
 
 	return true;
 }
 
-
-bool AISystem::ParseNode(xmlNodePtr node,AINodeGroup& nodeGroup)
+void AISystem::ParseNode(xmlNodePtr node,AINodeGroup& nodeGroup)
 {
-	if(node == nullptr)
-	{
-		return false;	
-	}
+	auto nodeName = _xmlFile.GetNodeName(node);	
 
+	auto it = _AINodeFunction.find(nodeName);
+	if(it!= _AINodeFunction.end())
+	{
+		auto pNodeAction =  it->second();
+		pNodeAction->Load(node);
+		nodeGroup.push_back(pNodeAction);
+		if(IsSpecial(nodeName))
+		{
+			auto children = _xmlFile.GetChildNode(node);
+			TraversalNode(children,static_cast<AINode*>(pNodeAction)->_nodeGroupAction);
+		}
+	}
+}
+
+bool AISystem::IsSpecial(const char*nodeName)
+{
 	
-	{
-		auto pNodeNow = node;
+		if(strcmp(nodeName,"SelectorNode") == 0)
+		{
+			return true;	
+		}
+		else if(strcmp(nodeName,"SequenceNode") == 0)
+		{
+			return true;
+		}
+		else if(strcmp(nodeName,"ParallelNode") == 0)
+		{
+			return true;
+		}
 
-		do {
-			if(pNodeNow == nullptr){
-				break;	
-			}
-			auto nodeName = _xmlFile.GetNodeName(pNodeNow);	
-			if(strcmp(nodeName,"SelectorNode") == 0)
-			{
-				auto pNode = new SelectorNode();
-				auto children = _xmlFile.GetChildNode(pNodeNow);
-				ParseNode(children,pNode->_nodeGroupAction);
-				nodeGroup.push_back(pNode);
-			}
-			else if(strcmp(nodeName,"SequenceNode") == 0)
-			{
-				auto pNode = new SequenceNode();
-				auto children = _xmlFile.GetChildNode(pNodeNow);
-				ParseNode(children,pNode->_nodeGroupAction);
-				nodeGroup.push_back(pNode);
-
-			}
-			else if(strcmp(nodeName,"ParallelNode") == 0)
-			{
-				auto pNode = new ParallelNode();
-				auto children = _xmlFile.GetChildNode(pNodeNow);
-				ParseNode(children,pNode->_nodeGroupAction);
-				nodeGroup.push_back(pNode);
-
-			
-			
-			}
-			else 
-			{
-				auto it = _AINodeFunction.find(nodeName);
-				if(it!= _AINodeFunction.end())
-				{
-					auto pNodeAction =  it->second();
-					pNodeAction->Load(pNodeNow);
-					nodeGroup.push_back(pNodeAction);
-				}
-			}
-			pNodeNow = XmlFile::GetNext(pNodeNow);
-		}while(true);
-
-	}
 	return true;
+};
+
+
+
+void AISystem::TraversalNode(xmlNodePtr node,AINodeGroup& nodeGroup)
+{
+	if(node == nullptr){
+		return;	
+	}
+
+	auto pNode = node;
+
+	do {
+		if(pNode == nullptr){
+			break;	
+		}
+		ParseNode(pNode,nodeGroup);
+		pNode = XmlFile::GetNext(pNode);
+	}while(true);
+
 }
 
 void AISystem::Update(Hero*hero)

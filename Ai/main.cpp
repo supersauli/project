@@ -54,7 +54,7 @@ int main()
 	AISystem ai;
 	ai.Init();
 	ai.LoadRes();
-	int i = 100;
+	int i = 200;
 	do
 	{
 	 ai.Update(&hero);
