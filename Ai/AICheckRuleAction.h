@@ -6,7 +6,7 @@
 /**
  * @brief ai执行动作检查
  */
-class CheckRuleAction:public BaseAction ,public AINode
+class CheckRuleAction:public BaseAction ,public AINodeBase
 {
 	public:
 

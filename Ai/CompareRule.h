@@ -28,16 +28,33 @@ class CompareRule
 		bool LessEqule(T t1,T t2){return t1 <= t2;}
 
 
-		typedef *(compareRule)(T t1,T t2);
+		typedef *(CompareRule)(T t1,T t2);
 
 		//compareRule _cmprule;
 		
-		bool compare(std::string ruleName,T t1,T t2){
-			auto it = _cmpRuleMap.find(ruleName);
-			if(it != _cmpRuleMap.end()){
-				return it->second(t1,t2);
+		bool Compare(std::string ruleName,T t1,T t2){
+			auto it = GetCompareRule(ruleName);
+			if(it != nullptr)
+			{
+				it(t1,t2);
 			}
 		};
+
+		CompareRule *GetCompareRule(std::string ruleName){
+			auto it = _cmpRuleMap.find(ruleName);
+			if(it != _cmpRuleMap.end())
+			{
+				return it->second;	
+			}
+			return nullptr;
+
+		};
+
+		static CompareRule& GetInstance()
+		{
+			static CompareRule compareRule;
+			return compareRule;
+		}
 
 	private:
 		std::map<std::string,compareRule> _cmpRuleMap;

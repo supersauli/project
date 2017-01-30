@@ -3,6 +3,7 @@
 #include "AICheckRuleAction.h"
 #include "AIExecuteRuleAction.h"
 #include "Hero.h"
+#include "AINode.h"
 
 
 bool JudgeAction::Check(Obj *obj)
@@ -73,23 +74,10 @@ bool AISystem::LoadRes()
 	auto root = _xmlFile.GetRootElement();
 	while(root != nullptr)
 	{
-			
-		//auto nodeName = _xmlFile.GetNodeName(root);
-		//
 		auto children = _xmlFile.GetChildNode(root);
-		
 		ParseNode(children,_AINodeGroup);
-
-
-
-
-
-
 		root = _xmlFile.GetNext(root);	
-	
 	}
-
-
 
 
 	return true;
@@ -97,17 +85,17 @@ bool AISystem::LoadRes()
 bool AISystem::Init()
 {
 	
-	_AINodeFunction["CheckHP"] = []()->AINode*{return new CheckHp();};
-	_AINodeFunction["CheckMP"] = []()->AINode*{return new CheckMp();};
-	_AINodeFunction["Hit"] = []()->AINode*{return new ExecuteHit();};
-	_AINodeFunction["Echo"] = []()->AINode*{return new ExecuteEcho();};
+	_AINodeFunction["CheckHP"] = []()->AINodeBase*{return new CheckHp();};
+	_AINodeFunction["CheckMP"] = []()->AINodeBase*{return new CheckMp();};
+	_AINodeFunction["Hit"] = []()->AINodeBase*{return new ExecuteHit();};
+	_AINodeFunction["Echo"] = []()->AINodeBase*{return new ExecuteEcho();};
 
 
 	return true;
 }
 
 
-bool AISystem::ParseNode(xmlNodePtr node,AINODEGROUP& nodeGroup)
+bool AISystem::ParseNode(xmlNodePtr node,AINodeGroup& nodeGroup)
 {
 	if(node == nullptr)
 	{
@@ -125,24 +113,28 @@ bool AISystem::ParseNode(xmlNodePtr node,AINODEGROUP& nodeGroup)
 			auto nodeName = _xmlFile.GetNodeName(pNodeNow);	
 			if(strcmp(nodeName,"SelectorNode") == 0)
 			{
-				//nodeGroup.push_back();	
 				auto pNode = new SelectorNode();
-				//pNode->_selectGroup = nodeGroup;
-				//nodeGroup.clear();
 				auto children = _xmlFile.GetChildNode(pNodeNow);
-				ParseNode(children,pNode->_selectGroup);
+				ParseNode(children,pNode->_nodeGroupAction);
 				nodeGroup.push_back(pNode);
 			}
 			else if(strcmp(nodeName,"SequenceNode") == 0)
 			{
 				auto pNode = new SequenceNode();
-				//pNode->_sequenceGroup = nodeGroup;
-				//nodeGroup.clear();
-				//nodeGroup.push_back(pNode);
 				auto children = _xmlFile.GetChildNode(pNodeNow);
-				ParseNode(children,pNode->_sequenceGroup);
+				ParseNode(children,pNode->_nodeGroupAction);
 				nodeGroup.push_back(pNode);
 
+			}
+			else if(strcmp(nodeName,"ParallelNode") == 0)
+			{
+				auto pNode = new ParallelNode();
+				auto children = _xmlFile.GetChildNode(pNodeNow);
+				ParseNode(children,pNode->_nodeGroupAction);
+				nodeGroup.push_back(pNode);
+
+			
+			
 			}
 			else 
 			{
@@ -167,8 +159,6 @@ void AISystem::Update(Hero*hero)
 	{
 		it->Update(hero);	
 	}
-
-
 
 }
 

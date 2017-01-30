@@ -35,7 +35,6 @@ class StateMachine
 		std::vector<JudgeAction*>  _judgeAction;
 };
 
-typedef std::list<AINode*> AINODEGROUP;
 class AISystem
 {
 
@@ -43,14 +42,14 @@ class AISystem
 		bool Init();
 		bool LoadRes();
 		void Update(int id,Obj*obj);
-		bool ParseNode(xmlNodePtr node,AINODEGROUP& nodeGroup);
+		bool ParseNode(xmlNodePtr node,AINodeGroup& nodeGroup);
 		void Update(Hero*hero);
 
 	private:
-		typedef AINode *(createAINode)() ;
+		typedef AINodeBase *(createAINode)() ;
 		std::map<int,AINode*> _stateMachineMap;
 		XmlFile _xmlFile;
-		std::list<AINode*> _AINodeGroup;
+		AINodeGroup _AINodeGroup;
 		std::map<std::string,createAINode*> _AINodeFunction;
 
 };

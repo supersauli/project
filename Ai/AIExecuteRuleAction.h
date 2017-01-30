@@ -9,10 +9,8 @@
 /**
  *@brief ai执行动作检查
  */
-class ExecuteRuleAction:public BaseAction ,public AINode
+class ExecuteRuleAction:public BaseAction ,public AINodeBase
 {
-	public:
-
 
 };
 class ExecuteHit :public ExecuteRuleAction
@@ -26,9 +24,11 @@ class ExecuteHit :public ExecuteRuleAction
 			obj->SetMp(curMp - curMp);
 			return true;
 		}
-			 void Load(xmlNodePtr node){
-			 XmlFile::GetNodeValue(node,"hp",_decHp);
-			 XmlFile::GetNodeValue(node,"mp",_decMp);
+
+		void Load(xmlNodePtr node)
+		{
+			XmlFile::GetNodeValue(node,"hp",_decHp);
+			XmlFile::GetNodeValue(node,"mp",_decMp);
 		};
 
 

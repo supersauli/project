@@ -37,7 +37,7 @@ IsIgnore()
 
 
 fileList=$( ls -R|awk '/\.cpp|\.cc/' )
-echo  $fileList
+#echo  $fileList
 for str in $fileList
 do
 	#加``是为了str 作用域 不被修改

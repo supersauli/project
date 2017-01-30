@@ -2,7 +2,7 @@
 #include <algorithm>
 bool SelectorNode::Update(Obj *obj)
 {
-	for (auto it :_selectGroup)
+	for (auto it :_nodeGroupAction)
 	{
 		if(it->Update(obj))
 		{
@@ -13,15 +13,10 @@ bool SelectorNode::Update(Obj *obj)
 	return false;
 };
 
-void SelectorNode::AddNode(AINode*node)
-{
-	_selectGroup.push_back(node);
-};
-
 
 bool  SequenceNode::Update(Obj *obj)
 {
-	for (auto it:_sequenceGroup)
+	for (auto it:_nodeGroupAction)
 	{
 		if(!it->Update(obj))
 		{
@@ -32,23 +27,15 @@ bool  SequenceNode::Update(Obj *obj)
 	return true;
 };
 
-void SequenceNode::AddNode(AINode*node)
-{
-	_sequenceGroup.push_back(node);
-};
 
 bool  ParallelNode::Update(Obj *obj)
 {
 
-	for (auto it:_parallelGroup)
+	for (auto it:_nodeGroupAction)
 	{
 		it->Update(obj);
 	}
 	return true;
-};
-
-void ParallelNode::AddNode(AINode*node){
-	_parallelGroup.push_back(node);
 };
 
 
@@ -56,7 +43,7 @@ void ParallelNode::AddNode(AINode*node){
 bool ParallelHybirdNode::Update(Obj *obj)
 {
 	int returnFlagNum{0};
-	for(auto it:_parallelGroup)
+	for(auto it:_nodeGroupAction)
 	{
 		bool result=it->Update(obj);
 		if(result == _needReturnFlag)

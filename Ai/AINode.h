@@ -7,24 +7,29 @@
 #include "XmlFile.h"
 typedef Hero Obj;
 
+class AINodeBase{
+public:
+	virtual bool  Update(Obj *obj){
+		return true;
+	};
+
+	virtual void Load(xmlNodePtr node){};
+	
+};
+
+typedef std::list<AINodeBase*>  AINodeGroup ;
 
 /**
  * @brief 基类
  */
-class AINode
+class AINode:public AINodeBase
 {
 public:
-
-	virtual bool  Update(Obj *obj){
-		return true;
-	};
 	
-	virtual void Load(xmlNodePtr node){};
-
+	AINodeGroup _nodeGroupAction;
 };
 
 
-typedef std::list<AINode*>  NodeGroup ;
 
 /**
  * @brief SelectorNode有一个成功就直接返回成功，否则返回失败
@@ -33,9 +38,6 @@ class SelectorNode:public AINode
 {
 public:
 	 bool Update(Obj *obj);
-     void AddNode(AINode*node);
- //private:
-	 NodeGroup _selectGroup;
 };
 
 /**
@@ -45,9 +47,6 @@ class SequenceNode:public AINode
 {
 public:
 	 bool Update(Obj *obj);
-     void AddNode(AINode* node);
-//private:
-	NodeGroup  _sequenceGroup;
 
 };
 
@@ -58,10 +57,6 @@ class ParallelNode:public AINode
 {
 public:
 	 bool Update(Obj *obj);
-     void AddNode(AINode* node);
-//private:
-	NodeGroup  _parallelGroup;
-
 };
 
 /**
@@ -71,7 +66,6 @@ class ParallelHybirdNode:public AINode
 {
 public:
 	bool Update(Obj *obj);
-	void AddNode(AINode* node);
 //private:
 	/**
 	 * @brief 需要的ture还是false
@@ -83,7 +77,7 @@ public:
 	 */
 	int  _needReturnFlagNum;
 
-	NodeGroup _parallelGroup;
+	AINodeGroup _parallelGroup;
 
 };
 
