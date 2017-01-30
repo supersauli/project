@@ -1,63 +1,62 @@
 #ifndef _COMPARE_RULE_H__
 #define _COMPARE_RULE_H__
-
-#include <map>
-
+#include<string>
+#include<iostream>
 template<typename T>
 class CompareRule
 {
 	public:
-		void Init()
-		{
-			_cmpRuleMap[">"] = More;
-			_cmpRuleMap[">="] = MoreEqule;
-			_cmpRuleMap["<"] = Less;
-			_cmpRuleMap["<="] = LessEqule;
-			_cmpRuleMap["=="] = Equal;
-			_cmpRuleMap["!="] = Not;
 
+		static bool More(T t1,T t2){return t1 > t2;}
+		static bool Less(T t1,T t2){return t1 < t2;}
+		static bool Equal(T t1,T t2){return t1 == t2;}
+		static bool Not(T t1,T t2){return t1 != t2;}
+		static bool MoreEqule(T t1,T t2){return t1 >= t2;}
+		static bool LessEqule(T t1,T t2){return t1 <= t2;}
+		static bool None(T t1,T t2){return false;};
+		typedef bool (*CompareRuleFunc)(T t1,T t2);
 
-		}
-
-
-		bool More(T t1,T t2){return t1 > t2;}
-		bool Less(T t1,T t2){return t1 < t2;}
-		bool Equal(T t1,T t2){return t1 == t2;}
-		bool Not(T t1,T t2){return t1 != t2;}
-		bool MoreEqule(T t1,T t2){return t1 >= t2;}
-		bool LessEqule(T t1,T t2){return t1 <= t2;}
-
-
-		typedef *(CompareRule)(T t1,T t2);
-
-		//compareRule _cmprule;
-		
 		bool Compare(std::string ruleName,T t1,T t2){
-			auto it = GetCompareRule(ruleName);
+			auto it = GetCompareRuleFunc(ruleName);
 			if(it != nullptr)
 			{
 				it(t1,t2);
 			}
 		};
 
-		CompareRule *GetCompareRule(std::string ruleName){
-			auto it = _cmpRuleMap.find(ruleName);
-			if(it != _cmpRuleMap.end())
+
+		static CompareRuleFunc GetCompareRuleFunc(std::string ruleName){
+
+			if(strcmp(ruleName.c_str(),">") == 0)
 			{
-				return it->second;	
+				return More;	
 			}
-			return nullptr;
+			else if(strcmp(ruleName.c_str(),">=") == 0)
+			{
+				return MoreEqule;	
+			}
 
+			else if(strcmp(ruleName.c_str(),"<") == 0)
+			{
+				return Less;	
+			}
+
+			else if(strcmp(ruleName.c_str(),"<=") == 0)
+			{
+				return LessEqule;
+			}
+
+			else if(strcmp(ruleName.c_str(),"==") == 0)
+			{
+				return Equal;	
+			}
+			else if(strcmp(ruleName.c_str(),"!=") == 0)
+			{
+				return Not;	
+			}
+
+			return None;
 		};
-
-		static CompareRule& GetInstance()
-		{
-			static CompareRule compareRule;
-			return compareRule;
-		}
-
-	private:
-		std::map<std::string,compareRule> _cmpRuleMap;
 
 };
 

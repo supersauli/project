@@ -2,19 +2,24 @@
 <root>
 	<SelectorNode>
 		<SequenceNode>
-			<CheckHP hp="1000"/>
+			<CheckHP hp="1000" cmp="&gt;="/>
 			<Echo info="checkHP 1000"/>
 			<Hit hp="50"/>
 		</SequenceNode>
 		<SequenceNode>
-			<CheckHP hp="900"/>
+			<CheckHP hp="900" cmp = "&gt;="/>
 			<Echo info="CheckHP 900"/>
 			<Hit hp="20"/>
 		</SequenceNode>
 	<SequenceNode>
-			<CheckHP hp="100"/>
+		<CheckHP hp="100" cmp = "&gt;="/>
 			<Echo info="CheckHP 100"/>
 			<Hit hp="90"/>
+		</SequenceNode>
+	<SequenceNode>
+		<CheckHP hp="100" cmp = "&lt;" />
+			<Echo info="CheckHP -90"/>
+			<Hit hp="-90"/>
 		</SequenceNode>
 	</SelectorNode>
 
