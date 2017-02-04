@@ -7,10 +7,12 @@
 /**
  * @brief ai执行动作检查
  */
-class CheckRuleAction:public BaseAction ,public AINodeBase
+class CheckRuleAction:public AINodeBase
 {
-	public:
-
+public:
+	virtual bool  Update(Obj *obj) {
+		return true;
+	}
 };
 
 class CheckHp:public CheckRuleAction

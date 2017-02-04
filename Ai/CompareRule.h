@@ -16,7 +16,7 @@ class CompareRule
 		static bool None(T t1,T t2){return false;};
 		typedef bool (*CompareRuleFunc)(T t1,T t2);
 
-		bool Compare(std::string ruleName,T t1,T t2){
+		bool Compare(const std::string& ruleName,T t1,T t2){
 			auto it = GetCompareRuleFunc(ruleName);
 			if(it != nullptr)
 			{

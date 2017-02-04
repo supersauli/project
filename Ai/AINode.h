@@ -9,11 +9,9 @@ typedef Hero Obj;
 
 class AINodeBase{
 public:
-	virtual bool  Update(Obj *obj){
-		return true;
-	};
+	virtual bool  Update(Obj *obj) = 0;
 
-	virtual void Load(xmlNodePtr node){};
+	virtual void  Load(xmlNodePtr node){};
 	
 };
 

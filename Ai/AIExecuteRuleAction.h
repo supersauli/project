@@ -9,10 +9,14 @@
 /**
  *@brief ai执行动作检查
  */
-class ExecuteRuleAction:public BaseAction ,public AINodeBase
+class ExecuteRuleAction:public AINodeBase
 {
 
+		virtual	bool Update(Obj*obj){
+			return true;
+		}
 };
+
 class ExecuteHit :public ExecuteRuleAction
 {
 	public:
@@ -21,7 +25,7 @@ class ExecuteHit :public ExecuteRuleAction
 			int curHp = obj->GetHp();
 			obj->SetHp(curHp-_decHp);
 			int curMp = obj->GetMp();
-			obj->SetMp(curMp - curMp);
+			obj->SetMp(curMp - _decMp);
 			return true;
 		}
 

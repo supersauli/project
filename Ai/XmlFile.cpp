@@ -29,7 +29,7 @@ bool XmlFile::Parse(const char*buf,int size)
 		size = strlen(buf);	
 	}
 
-	_doc = xmlParseMemory(buf,strlen(buf));
+	_doc = xmlParseMemory(buf,size);
 	if(_doc == nullptr){
 		return false;
 	}
@@ -69,49 +69,24 @@ xmlNodePtr XmlFile::GetChildNode(const xmlNodePtr node,const char* name)
 
 xmlNodePtr XmlFile::GetChildNode(const xmlNodePtr node)
 {
-
-	if(node == nullptr){
-		return nullptr;
-	}
-	auto children = node->xmlChildrenNode;
-	if(children != nullptr)
+	xmlNodePtr childrenNode = nullptr;		
+	if(node != nullptr)
 	{
-
-		do{
-			if(children == nullptr){
-				break;
+		childrenNode = node->xmlChildrenNode;
+		if(childrenNode != nullptr)
+		{
+			if(childrenNode->type != XML_ELEMENT_NODE){
+				childrenNode = GetNext(childrenNode);
 			}
-
-			if(children->type == XML_ELEMENT_NODE){
-				return children;
-			}
-			children = GetNext(children);
-		}while(true);
-
+		}
 	}
-	return nullptr;
+
+	return childrenNode;
 }
 
 const char* XmlFile::GetNodeName(const xmlNodePtr node)
 {
-	auto pNode = node;
-	if(pNode != nullptr)
-	{
-		do{
-			if(pNode == nullptr){
-				break;
-			}
-
-			if(pNode->type == XML_ELEMENT_NODE){
-				return reinterpret_cast<const char*>(node->name);
-			}
-			pNode = GetNext(pNode);
-		}while(true);
-
-	}
-
-
-	return nullptr;
+	return reinterpret_cast<const char*>(node->name);
 }
 
 
@@ -324,7 +299,7 @@ xmlNodePtr XmlFile::CreateNode(const char* name)
 
 xmlNodePtr XmlFile::CreateChild(xmlNodePtr node,const char*name,const char*content)
 {
-	if(node == nullptr || node == nullptr)	{
+	if(node == nullptr || name == nullptr)	{
 		return nullptr;
 	}
 	return xmlNewChild(node,nullptr,reinterpret_cast<const xmlChar*> (name),reinterpret_cast<const xmlChar*>(content));
